@@ -1,0 +1,25 @@
+[project]
+name = "forecast-shares"
+version = "0.1.0"
+description = "Forecast shares project skeleton"
+requires-python = ">=3.10"
+dependencies = [
+  "polars",
+  "pandas",
+  "numpy",
+  "pyarrow",
+  "scikit-learn",
+  "tensorflow",
+  "neuralforecast",
+  "statsforecast",
+  "mlforecast",
+  "matplotlib",
+  "mlflow",
+  "rich",
+  "tqdm",
+  "hydra-core"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
