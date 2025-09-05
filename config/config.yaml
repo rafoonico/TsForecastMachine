@@ -1,0 +1,48 @@
+seed: 2025
+freq: "M"
+top_k: 15
+tw: 12
+h: 1
+epsilon: 1.0e-6
+
+paths:
+  raw: "data/raw"
+  interim: "data/interim"
+  processed: "data/processed"
+  artifacts: "artifacts"
+
+schema:
+  date: "date"
+  category: "category_id"
+  item: "item_id"
+  qty: "sales_qty"
+  price: "price"
+  discount: "discount"
+  promo: "promo_flag"
+
+features:
+  item_level: ["price", "discount", "promo_flag"]
+  global_time:
+    - "month_sin"
+    - "month_cos"
+
+models:
+  lstm_softmax:
+    hidden: 64
+    dropout: 0.2
+    lr: 1.0e-3
+    epochs: 200
+    batch_size: 64
+
+  nhits:
+    input_size: 12
+    h: 1
+    max_steps: 400
+    scaler_type: "standard"
+
+  tft:
+    input_size: 12
+    h: 1
+    max_steps: 600
+    hidden_size: 64
+    dropout: 0.1
